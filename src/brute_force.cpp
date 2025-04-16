@@ -3,7 +3,7 @@
 #include <limits>
 #include <iostream>
 #include <random>
-#include "distance.h"
+#include "../include/distance.h"
 
 using namespace std;
 
