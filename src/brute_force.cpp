@@ -1,9 +1,9 @@
 #include <utility>
-#include <math.h>
 #include <set>
 #include <limits>
 #include <iostream>
 #include <random>
+#include "distance.h"
 
 using namespace std;
 
@@ -12,7 +12,6 @@ std::mt19937 gen(rd());
 std::uniform_real_distribution<> distr(-999,999);
 const int N_POINTS = 3;
 
-double calculateDistance(pair<double,double> p1, pair<double,double> p2);
 double bruteforceMinDist(set<pair<double,double>> S);
 
 int main()
@@ -43,9 +42,3 @@ double bruteforceMinDist(set<pair<double,double>> S)
     }
     return min_dist;
 }
-
-double calculateDistance(pair<double,double> p1, pair<double,double> p2)
-{
-    return sqrt(pow(p1.first - p2.first, 2) + pow(p1.second - p2.second, 2));
-}
-
