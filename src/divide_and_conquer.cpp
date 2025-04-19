@@ -20,8 +20,8 @@ void debug_print_points(std::vector<std::pair<double,double>> P);
 std::random_device rd;
 std::mt19937 gen(rd());
 std::geometric_distribution<> distr(0.013331);
-const int N_POINTS = 12;
-const bool DEBUG = 1;
+const int N_POINTS = 11;
+const bool DEBUG = -1;
 
 int main()
 {
@@ -48,8 +48,9 @@ double divideconquerMinDist(std::vector<std::pair<double,double>> points)
 }
 
 /* Función basada en el algoritmo descrito por el libro Introduction to Algorithms en la sección 33.4 "Finding the closest pair of points"
-	Tiempo de ejecución O(n lg n)
-	Input: cjto. de puntos P, cjtos. X, Y (puntos de P ordenados según las coordenadas X e Y respectivamente)
+	Tiempo de ejecución O(n lg n).
+
+	Input: arreglo de puntos P, arreglos ordenados X, Y (puntos de P ordenados según valores de coordenadas X e Y respectivamente)
 	Output: distancia mínima entre dos puntos de P
 */
 double _mindist(std::vector<std::pair<double,double>> P, std::vector<std::pair<double,double>> X, std::vector<std::pair<double,double>> Y)
@@ -58,14 +59,13 @@ double _mindist(std::vector<std::pair<double,double>> P, std::vector<std::pair<d
 	if (P.size() <= 3) return bruteforceMinDist(P);
 
 	/*
-	P_L y P_R son subconjuntos de P tal que floor(|P_L| / 2) + ceil(|P_R| / 2) = |P|
+	P_L y P_R son subconjuntos de P tal que floor(|P|/2) = |P_L| y ceil(|P|/2) = |P_R|
 	X_L y Y_L son subconjuntos ordenados de X e Y que están la izquierda de la recta de bisección (pertenecen a P_L)
 	X_R y Y_R idem (pertenecen a P_R)
 	*/
 	std::vector<std::pair<double,double>> P_L, P_R, X_L, X_R, Y_L, Y_R;
 
-	/* La recta de bisección siempre dividirá a la mitad de los puntos a un lado, y la otra mitad al otro.
-	 */
+	/* P.size() / 2 es equivalente a floor(|P|/2) */
 	for (size_t i = 0; i < (P.size())/2; ++i) {
 		P_L.push_back(X[i]);
 		X_L.push_back(X[i]);
@@ -75,22 +75,10 @@ double _mindist(std::vector<std::pair<double,double>> P, std::vector<std::pair<d
 		X_R.push_back(X[i]);
 	}
 
-	double bisection_X = ((X_L[X_R.size()-1]).first + (X_R[0]).first) / 2;
+	double bisection_X = ((X_L[X_L.size()-1]).first + (X_R[0]).first) / 2;
 	for (auto pair : Y) {
 		if (pair.first < bisection_X) Y_L.push_back(pair);
 		else Y_R.push_back(pair);
-	}
-
-	// debug debug
-	if (DEBUG) {
-		std::cout << "X_L: ";
-		debug_print_points(X_L);
-		std::cout << "X_R: ";
-		debug_print_points(X_R);
-		std::cout << "Y_L: ";
-		debug_print_points(Y_L);
-		std::cout << "Y_R: ";
-		debug_print_points(Y_R);
 	}
 
 	// obtener mindist de P_L y P_R, y asignar a ``dist`` la menor de las dos
