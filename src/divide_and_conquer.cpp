@@ -34,7 +34,7 @@ int main()
 	std::cout << "mindist DIVIDE AND CONQUER:\n " << divideconquerMinDist(blangonga) << std::endl;
 	std::cout << "mindist BRUTEFORCE: " << bruteforceMinDist(blangonga) << std::endl;
 	return 0;
-}
+
 */
 
 /* Esta NO ES la función que recursa (la indicada es _mindist), sólo hace el pre-sort. */
@@ -79,13 +79,30 @@ double _mindist(std::vector<std::pair<double, double>> P, std::vector<std::pair<
 		X_R.push_back(X[i]);
 	}
 
-	double bisection_X = ((X_L[X_L.size() - 1]).first + (X_R[0]).first) / 2;
-	for (auto pair : Y)
-	{
-		if (pair.first < bisection_X)
-			Y_L.push_back(pair);
-		else
-			Y_R.push_back(pair);
+    pair<double, double> mediana = X_R[0];
+	// double bisection_X = ((X_L[X_L.size()-1]).first + (X_R[0]).first) / 2;
+
+	for (auto pair : Y) {
+        if (pair.first >= mediana.first && Y_R.size() < X_R.size()) {
+            Y_R.push_back(pair);
+        } else {
+            Y_L.push_back(pair);
+        }
+		//if (pair.first < bisection_X) Y_L.push_back(pair);
+		//else Y_R.push_back(pair);
+	}
+    
+    //std::cout << "Y_L size=" << Y_L.size() << ", Y_R size=" << Y_R.size() << std::endl;
+	// debug debug
+	if (DEBUG) {
+		std::cout << "X_L: ";
+		debug_print_points(X_L);
+		std::cout << "X_R: ";
+		debug_print_points(X_R);
+		std::cout << "Y_L: ";
+		debug_print_points(Y_L);
+		std::cout << "Y_R: ";
+		debug_print_points(Y_R);
 	}
 
 	// obtener mindist de P_L y P_R, y asignar a ``dist`` la menor de las dos
@@ -102,11 +119,12 @@ double _mindist(std::vector<std::pair<double, double>> P, std::vector<std::pair<
 		std::cout << "delta dist: " << dist << std::endl;
 
 	// filtrar sólo los puntos de P_L y P_R  con ``dist`` distancia respecto a la recta
-	std::vector<std::pair<double, double>> strip;
-	for (auto p : Y)
-	{
-		if (abs(bisection_X - p.first) < dist)
-			strip.push_back(p);
+
+	std::vector<std::pair<double,double>> strip;
+	for (auto p : Y) {
+        if (abs(mediana.first - p.first) < dist) strip.push_back(p);
+		//if (abs(bisection_X - p.first) < dist)
+	    //	strip.push_back(p);
 	}
 
 	// de de debug print
@@ -117,7 +135,6 @@ double _mindist(std::vector<std::pair<double, double>> P, std::vector<std::pair<
 		std::cout << std::endl;
 	}
 
-	// la magia del sur (sólo es necesario revisar 8 puntos por cada punto del strip, gracias CLRS)
 	for (size_t i = 0; i < strip.size(); ++i)
 	{
 		for (size_t j = i + 1; j < (i + 8 < strip.size() ? i + 8 : strip.size()); ++j)

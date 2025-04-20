@@ -5,4 +5,5 @@
 
 double divideconquerMinDist(std::vector<std::pair<double,double>> points);
 
+void debug_print_points(std::vector<std::pair<double, double>>);
 #endif

@@ -50,6 +50,40 @@ vector<pair<double, double>> generatePoints(int n, int min, int max)
 }
 
 /*
+ * Función para revisar la correctitud del algoritmo d&c con algunos casos patológicos.
+ */
+void test_correctness(int n, int min, int max)
+{
+    std::default_random_engine generator;
+    uniform_real_distribution<> dis(min, max);
+    
+
+    for (int i = 0; i < 20; ++i) { 
+        // Fijamos un x
+        int fixed_x = dis(generator);
+
+        vector<pair<double, double>> points;
+        points.reserve(n);
+
+        for (int i = 0; i < n; ++i) {
+            double y = dis(generator);
+            points.emplace_back(fixed_x, y);
+        }
+
+        std::cout << "Puntos: ";
+        // debug_print_points(points);
+
+        int bf_min = bruteforceMinDist(points);
+        int dc_min = divideconquerMinDist(points);
+
+        std::cout << "n=" << n << ", bf_min=" << bf_min << ", dc_min=" << dc_min << std::endl;
+        if (dc_min != bf_min) {
+            std::cout << "Failed" << std::endl;
+        }
+    }
+}
+
+/*
 Función para testear complejidad temporal de forma experimental, donde:
 - function: función a evaluar, en este caso destinada a encontrar la distancia minima entre dos puntos,
 en un set de puntos.
