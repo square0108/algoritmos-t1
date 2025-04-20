@@ -20,19 +20,35 @@ void debug_print_points(std::vector<std::pair<double,double>> P);
 std::random_device rd;
 std::mt19937 gen(rd());
 std::geometric_distribution<> distr(0.013331);
-const int N_POINTS = 12;
-const bool DEBUG = 1;
+const int N_POINTS = 16;
+const bool DEBUG = 0;
 
 int main()
 {
-	std::vector<std::pair<double,double>> blangonga; 
-	// set de puntos bonitos :)
-	// {make_pair(0,1),make_pair(1,0),make_pair(2,0.5),make_pair(2.2,1),make_pair(4.2,2),make_pair(4.2,1)};
-	for (int i = 0; i < N_POINTS; ++i) {
-		blangonga.push_back(std::make_pair<double,double>((double) distr(gen), (double) distr(gen)));
-	}
-    std::cout << "mindist DIVIDE AND CONQUER:\n " << divideconquerMinDist(blangonga) << std::endl;
-    std::cout << "mindist BRUTEFORCE: " << bruteforceMinDist(blangonga) << std::endl;
+    for (int n_points = 1; n_points <= 100; ++n_points) {
+        std::cout << "Trying n=" << n_points << std::endl;
+        for (int test = 0; test <= 100; ++test) {
+            std::vector<std::pair<double,double>> blangonga; 
+            // set de puntos bonitos :)
+            // {make_pair(0,1),make_pair(1,0),make_pair(2,0.5),make_pair(2.2,1),make_pair(4.2,2),make_pair(4.2,1)};
+            for (int i = 0; i < n_points; ++i) {
+                blangonga.push_back(std::make_pair<double,double>((double) distr(gen), (double) distr(gen)));
+            }
+
+            auto dc_mindist = divideconquerMinDist(blangonga);
+            auto bf_mindist = bruteforceMinDist(blangonga);
+            // std::cout << "mindist DIVIDE AND CONQUER: " << dc_mindist << std::endl;
+            // std::cout << "mindist BRUTEFORCE: " << bf_mindist << std::endl;
+            //
+            if (dc_mindist != bf_mindist) {
+                std::cout << "Error:" << std::endl;
+                std::cout << "mindist DIVIDE AND CONQUER: " << dc_mindist << std::endl;
+                std::cout << "mindist BRUTEFORCE: " << bf_mindist << std::endl;
+                std::cout << "Points:" << std::endl;
+                debug_print_points(blangonga);
+            }
+        }
+    }
     return 0;
 }
 
@@ -75,7 +91,7 @@ double _mindist(std::vector<std::pair<double,double>> P, std::vector<std::pair<d
 		X_R.push_back(X[i]);
 	}
 
-	double bisection_X = ((X_L[X_R.size()-1]).first + (X_R[0]).first) / 2;
+	double bisection_X = ((X_L[X_L.size()-1]).first + (X_R[0]).first) / 2;
 	for (auto pair : Y) {
 		if (pair.first < bisection_X) Y_L.push_back(pair);
 		else Y_R.push_back(pair);
@@ -105,8 +121,9 @@ double _mindist(std::vector<std::pair<double,double>> P, std::vector<std::pair<d
 	// filtrar sólo los puntos de P_L y P_R  con ``dist`` distancia respecto a la recta
 	std::vector<std::pair<double,double>> strip;
 	for (auto p : Y) {
-		if (abs(bisection_X - p.first) < dist)
-			strip.push_back(p);
+        if (abs(X_R[0].first - p.first) < dist) strip.push_back(p);
+		//if (abs(bisection_X - p.first) < dist)
+	    //	strip.push_back(p);
 	}
 	
 	// de de debug print
