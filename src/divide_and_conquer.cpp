@@ -66,9 +66,8 @@ double _mindist(std::vector<std::pair<double, double>> P, std::vector<std::pair<
 	X_R y Y_R idem (pertenecen a P_R)
 	*/
 	std::vector<std::pair<double, double>> P_L, P_R, X_L, X_R, Y_L, Y_R;
-
 	/* P.size() / 2 es equivalente a floor(|P|/2) */
-	for (size_t i = 0; i < (P.size()) / 2; ++i)
+	for (size_t i = 0; i < P.size() / 2; ++i)
 	{
 		P_L.push_back(X[i]);
 		X_L.push_back(X[i]);
@@ -79,22 +78,32 @@ double _mindist(std::vector<std::pair<double, double>> P, std::vector<std::pair<
 		X_R.push_back(X[i]);
 	}
 
-    pair<double, double> mediana = X_R[0];
-	// double bisection_X = ((X_L[X_L.size()-1]).first + (X_R[0]).first) / 2;
+    auto mediana = X_R[0];
 
+
+    /* 
+     * Primero ingresamos a X_R los elementos que se encuentran a la derecha de la mediana, y a 
+     * X_L los que se encuentran a la izquierda.
+     */
 	for (auto pair : Y) {
-        if (pair.first >= mediana.first && Y_R.size() < X_R.size()) {
+        if (pair.first > mediana.first) {
+            Y_R.push_back(pair);
+        } else if (pair.first == mediana.first && pair.second >= mediana.second) {
             Y_R.push_back(pair);
         } else {
             Y_L.push_back(pair);
         }
-		//if (pair.first < bisection_X) Y_L.push_back(pair);
-		//else Y_R.push_back(pair);
 	}
+
+
     
-    //std::cout << "Y_L size=" << Y_L.size() << ", Y_R size=" << Y_R.size() << std::endl;
 	// debug debug
 	if (DEBUG) {
+        std::cout << "jeje" << std::endl;
+		std::cout << "X: ";
+		debug_print_points(X);
+		std::cout << "Y: ";
+		debug_print_points(Y);
 		std::cout << "X_L: ";
 		debug_print_points(X_L);
 		std::cout << "X_R: ";
@@ -108,15 +117,11 @@ double _mindist(std::vector<std::pair<double, double>> P, std::vector<std::pair<
 	// obtener mindist de P_L y P_R, y asignar a ``dist`` la menor de las dos
 	double dist = 0;
 	double d1 = _mindist(P_L, X_L, Y_L);
+	double d2 = _mindist(P_R, X_R, Y_R);
+	dist = (d1 > d2) ? d2 : d1;
 
 	if (DEBUG)
-		std::cout << "d1: " << d1 << std::endl;
-	double d2 = _mindist(P_R, X_R, Y_R);
-	if (DEBUG)
-		std::cout << "d2: " << d2 << std::endl;
-	dist = (d1 > d2) ? d2 : d1;
-	if (DEBUG)
-		std::cout << "delta dist: " << dist << std::endl;
+		std::cout << "d1=" << d1 << ", d2=" << d2 << "delta=" << dist << std::endl;
 
 	// filtrar sólo los puntos de P_L y P_R  con ``dist`` distancia respecto a la recta
 
@@ -128,12 +133,12 @@ double _mindist(std::vector<std::pair<double, double>> P, std::vector<std::pair<
 	}
 
 	// de de debug print
-	if (DEBUG)
-	{
-		std::cout << "strip: ";
-		debug_print_points(strip);
-		std::cout << std::endl;
-	}
+	//if (DEBUG)
+	//{
+	//	std::cout << "strip: ";
+	//	debug_print_points(strip);
+	//	std::cout << std::endl;
+	//}
 
 	for (size_t i = 0; i < strip.size(); ++i)
 	{
@@ -147,14 +152,28 @@ double _mindist(std::vector<std::pair<double, double>> P, std::vector<std::pair<
 	return dist;
 }
 
+/* Retorna True si p1 < p2 orden lexicografico x-y*/
 bool compare_x(std::pair<double, double> p1, std::pair<double, double> p2)
 {
-	return (p1.first < p2.first);
+    if (p1.first < p2.first) {
+        return true;
+    } else if (p1.first == p2.first) {
+        return p1.second < p2.second;
+    } else {
+        return false;
+    }
 }
 
+/* Retorna True si p1 < p2 orden lexicografico y-x*/
 bool compare_y(std::pair<double, double> p1, std::pair<double, double> p2)
 {
-	return (p1.second < p2.second);
+    if (p1.second < p2.second) {
+        return true;
+    } else if (p1.second == p2.second) {
+        return p1.first < p2.first;
+    } else {
+        return false;
+    }
 }
 
 void debug_print_points(std::vector<std::pair<double, double>> P)
