@@ -27,9 +27,8 @@ int64_t getTime(vector<pair<double, double>> points, double (*function)(vector<p
     return duration.count();
 }
 
-// Función que con un input (n largo array, valor minimo, valor máximo)
-// genere un array de n puntos random (valores array son pair<double,double>)
-// Quizas despues puede generar puntos según una distribución
+/*Función que con un input (n largo array, valor minimo, valor máximo)
+ genere un array de n puntos random (valores array son pair<double,double>)*/
 vector<pair<double, double>> generatePoints(int n, int min, int max)
 {
     std::default_random_engine generator;
@@ -49,22 +48,20 @@ vector<pair<double, double>> generatePoints(int n, int min, int max)
     return points;
 }
 
-
-
 /*
  * Función para revisar la correctitud del algoritmo d&c con algunos casos patológicos.
+ - n: cantidad de elementos en los vectores
  */
 void test_correctness(int n, int min, int max)
 {
 
-
     vector<vector<pair<double, double>>> test_cases;
 
-	vector<pair<double, double>> puntos_lindos = {make_pair(1,4),make_pair(-1,0),make_pair(3,4),make_pair(7,8),make_pair(6,-2), make_pair(3,2), make_pair(-2,0), make_pair(3,7)};
+    vector<pair<double, double>> puntos_lindos = {make_pair(1, 4), make_pair(-1, 0), make_pair(3, 4), make_pair(7, 8), make_pair(6, -2), make_pair(3, 2), make_pair(-2, 0), make_pair(3, 7)};
 
-	vector<pair<double, double>> singleton = {make_pair(1,4)};
+    vector<pair<double, double>> singleton = {make_pair(1, 4)};
 
-	vector<pair<double, double>> par = {make_pair(1,4), make_pair(5, 7)};
+    vector<pair<double, double>> par = {make_pair(1, 4), make_pair(5, 7)};
 
     test_cases.push_back(puntos_lindos);
     test_cases.push_back(singleton);
@@ -72,17 +69,34 @@ void test_correctness(int n, int min, int max)
 
     std::default_random_engine generator;
     uniform_int_distribution<> dis(min, max);
-    
+
+    /* Puntos aleatorios */
+    for (int i = 0; i < 20; ++i)
+    {
+        vector<pair<double, double>> points;
+        points.reserve(n);
+
+        for (int i = 0; i < n; ++i)
+        {
+            double x = dis(generator);
+            double y = dis(generator);
+            points.emplace_back(x, y);
+        }
+
+        test_cases.push_back(points);
+    }
 
     /* Puntos con misma coordenada x */
-    for (int i = 0; i < 20; ++i) { 
+    for (int i = 0; i < 20; ++i)
+    {
         // Fijamos un x
         double fixed_x = dis(generator);
 
         vector<pair<double, double>> points;
         points.reserve(n);
 
-        for (int i = 0; i < n; ++i) {
+        for (int i = 0; i < n; ++i)
+        {
             double y = dis(generator);
             points.emplace_back(fixed_x, y);
         }
@@ -91,14 +105,16 @@ void test_correctness(int n, int min, int max)
     }
 
     /* Puntos con misma coordenada y */
-    for (int i = 0; i < 20; ++i) { 
+    for (int i = 0; i < 20; ++i)
+    {
         // Fijamos un x
         double fixed_y = dis(generator);
 
         vector<pair<double, double>> points;
         points.reserve(n);
 
-        for (int i = 0; i < n; ++i) {
+        for (int i = 0; i < n; ++i)
+        {
             double x = dis(generator);
             points.emplace_back(x, fixed_y);
         }
@@ -106,30 +122,49 @@ void test_correctness(int n, int min, int max)
         test_cases.push_back(points);
     }
 
-
-    /* Puntos con muchas coordenadas iguales */
-    for (int i = 0; i < 20; ++i) { 
+    /* El mismo punto repetido muchas veces */
+    for (int i = 0; i < 20; ++i)
+    {
 
         vector<pair<double, double>> points;
         points.reserve(n);
         double x = dis(generator);
         double y = dis(generator);
 
-        for (int i = 0; i < n; ++i) {
-            if (dis(generator) >= (max + min) / 2) {
-                x = dis(generator);
-            } else if (dis(generator) >= (max + min) / 2) {
-                y = dis(generator);
-            }
-
+        for (int i = 0; i < n; ++i)
+        {
             points.emplace_back(x, y);
         }
 
         test_cases.push_back(points);
     }
 
-    
-    for (auto points : test_cases) {
+    /* Puntos con coordenadas formando una cruz (borde de orden lexicografico)*/
+    for (int i = 0; i < 20; ++i)
+    {
+
+        vector<pair<double, double>> points;
+        points.reserve(n);
+        double x = dis(generator);
+        double y = dis(generator);
+
+        for (int i = 0; i < n; ++i)
+        {
+            if (dis(generator) >= (max + min) / 2)
+            {
+                points.emplace_back(dis(generator), y);
+            }
+            else
+            {
+                points.emplace_back(x, dis(generator));
+            }
+        }
+
+        test_cases.push_back(points);
+    }
+
+    for (auto points : test_cases)
+    {
 
         std::cout << "Puntos: ";
         debug_print_points(points);
@@ -137,11 +172,11 @@ void test_correctness(int n, int min, int max)
         int dc_min = divideconquerMinDist(points);
 
         std::cout << "bf_min=" << bf_min << ", dc_min=" << dc_min << std::endl;
-        if (dc_min != bf_min) {
+        if (dc_min != bf_min)
+        {
             std::cout << "Failed" << std::endl;
             break;
         }
-
     }
 }
 
