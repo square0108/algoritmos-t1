@@ -1,33 +1,16 @@
-#include <utility>
-#include <set>
 #include <limits>
 #include <iostream>
-#include <random>
-#include "../include/distance.h"
+#include "brute_force.h"
+#include <math.h>
 
 using namespace std;
 
-std::random_device rd;
-std::mt19937 gen(rd());
-std::uniform_real_distribution<> distr(-999,999);
-const int N_POINTS = 3;
-
-double bruteforceMinDist(set<pair<double,double>> S);
-
-int main()
+double calculateDistance(std::pair<double,double> p1, std::pair<double,double> p2)
 {
-    set<pair<double,double>> test_lol;
-    for (int i = 0; i < N_POINTS; i++) {
-        pair<double,double> point = make_pair<double,double>((double) distr(gen),(double) distr(gen));
-        test_lol.insert(point);
-        cout << "(" << point.first << ", " << point.second << ") ";
-    }
-    cout << endl;
-    cout << "mindist: " << bruteforceMinDist(test_lol) << endl;
-    return 0;
+    return sqrt(pow(p1.first - p2.first, 2) + pow(p1.second - p2.second, 2));
 }
 
-double bruteforceMinDist(set<pair<double,double>> S)
+double bruteforceMinDist(vector<pair<double,double>> S)
 {
     double min_dist = numeric_limits<double>::infinity();
     // Iterar sobre conjunto y calcular N-1, N-2, N-3, ..., 1 distancias, total N(N-1)
