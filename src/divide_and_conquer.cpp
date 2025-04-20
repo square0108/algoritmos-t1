@@ -91,10 +91,17 @@ double _mindist(std::vector<std::pair<double,double>> P, std::vector<std::pair<d
 		X_R.push_back(X[i]);
 	}
 
-	double bisection_X = ((X_L[X_L.size()-1]).first + (X_R[0]).first) / 2;
+    pair<double, double> mediana = X_R[0];
+	// double bisection_X = ((X_L[X_L.size()-1]).first + (X_R[0]).first) / 2;
+
 	for (auto pair : Y) {
-		if (pair.first < bisection_X) Y_L.push_back(pair);
-		else Y_R.push_back(pair);
+        if (pair.first < mediana.first) {
+            Y_L.push_back(pair);
+        } else {
+            Y_R.push_back(pair);
+        }
+		//if (pair.first < bisection_X) Y_L.push_back(pair);
+		//else Y_R.push_back(pair);
 	}
 
 	// debug debug
@@ -121,7 +128,7 @@ double _mindist(std::vector<std::pair<double,double>> P, std::vector<std::pair<d
 	// filtrar sólo los puntos de P_L y P_R  con ``dist`` distancia respecto a la recta
 	std::vector<std::pair<double,double>> strip;
 	for (auto p : Y) {
-        if (abs(X_R[0].first - p.first) < dist) strip.push_back(p);
+        if (mediana.first - p.first) < dist) strip.push_back(p);
 		//if (abs(bisection_X - p.first) < dist)
 	    //	strip.push_back(p);
 	}
