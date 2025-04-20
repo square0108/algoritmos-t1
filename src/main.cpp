@@ -7,8 +7,9 @@ int main()
 {
     std::cout << "Inicio el test" << std::endl;
 
-    test_complexity(bruteforceMinDist, "test.csv", "brute_force", 8, 512, 1, 20);
-    test_complexity(divideconquerMinDist, "test.csv", "divide_n_conquer", 8, 512, 1, 20);
+    test_correctness(5, -20, 20);
+    //test_complexity(bruteforceMinDist, "test.csv", "brute_force", 8, 512, 1, 20);
+    //test_complexity(divideconquerMinDist, "test.csv", "divide_n_conquer", 8, 512, 1, 20);
 
     std::cout << "Finalizo el test" << std::endl;
 
