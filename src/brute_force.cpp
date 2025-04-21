@@ -12,10 +12,26 @@ double calculateDistance(std::pair<double, double> p1, std::pair<double, double>
     return sqrt(pow(p1.first - p2.first, 2) + pow(p1.second - p2.second, 2));
 }
 
+// Iterar sobre conjunto de puntos y calcular N(N-1) distancias, N-1 por cada punto
 double bruteforceMinDist(vector<pair<double, double>> S)
 {
     double min_dist = numeric_limits<double>::infinity();
-    // Iterar sobre conjunto y calcular N-1, N-2, N-3, ..., 1 distancias, total N(N-1)
+    for (auto p1 = S.begin(); p1 != S.end(); p1++)
+    {
+        for (auto p2 = S.begin(); p2 != S.end(); p2++)
+        {
+            double dist = calculateDistance(*p1, *p2);
+            if ((min_dist) > dist)
+                min_dist = dist;
+        }
+    }
+    return min_dist;
+}
+
+// Iterar sobre conjunto y calcular N-1, N-2, N-3, ..., 1 distancias, levemente mejor que la anterior
+double bruteforceMinDist_oldest(vector<pair<double, double>> S)
+{
+    double min_dist = numeric_limits<double>::infinity();
     for (auto p1 = S.begin(); p1 != S.end(); p1++)
     {
         auto p2 = p1;
