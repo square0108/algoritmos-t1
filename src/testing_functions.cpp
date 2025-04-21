@@ -30,7 +30,7 @@ int64_t getTime(vector<pair<double, double>> points, double (*function)(vector<p
 
 /*Función que con un input (n largo array, valor minimo, valor máximo)
  genere un array de n puntos random (valores array son pair<double,double>)*/
-vector<pair<double, double>> generatePoints(int n, int min, int max)
+vector<pair<double, double>> generatePoints(size_t n, int min, int max)
 {
     std::default_random_engine generator;
 
@@ -38,13 +38,13 @@ vector<pair<double, double>> generatePoints(int n, int min, int max)
 
     set<pair<double, double>> point_set;
 
-    while (point_set.size() < n) {
-        
+    while (point_set.size() < n)
+    {
+
         double x = dis(generator);
         double y = dis(generator);
         point_set.emplace(x, y);
     }
-    
 
     vector<pair<double, double>> points;
     points.reserve(n);
@@ -57,7 +57,7 @@ vector<pair<double, double>> generatePoints(int n, int min, int max)
  * Función para revisar la correctitud del algoritmo d&c con algunos casos patológicos.
  - n: cantidad de elementos en los vectores
  */
-void test_correctness(double (*function)(vector<pair<double, double>>), int n, int min, int max)
+void test_correctness(double (*function)(vector<pair<double, double>>), size_t n, int min, int max)
 {
     vector<vector<pair<double, double>>> test_cases;
 
@@ -70,7 +70,6 @@ void test_correctness(double (*function)(vector<pair<double, double>>), int n, i
     test_cases.push_back(puntos_lindos);
     test_cases.push_back(singleton);
     test_cases.push_back(par);
-
 
     /* Puntos aleatorios */
     for (int i = 0; i < 20; ++i)
@@ -91,16 +90,16 @@ void test_correctness(double (*function)(vector<pair<double, double>>), int n, i
 
         set<pair<double, double>> point_set;
 
-        while (point_set.size() < n) {
+        while (point_set.size() < n)
+        {
             double y = dis(generator);
             point_set.emplace(fixed_x, y);
         }
-        
+
         vector<pair<double, double>> points;
         points.assign(point_set.begin(), point_set.end());
 
         test_cases.push_back(points);
-
     }
 
     /* Puntos con misma coordenada y */
@@ -111,11 +110,12 @@ void test_correctness(double (*function)(vector<pair<double, double>>), int n, i
 
         set<pair<double, double>> point_set;
 
-        while (point_set.size() < n) {
+        while (point_set.size() < n)
+        {
             double x = dis(generator);
             point_set.emplace(x, fixed_y);
         }
-        
+
         vector<pair<double, double>> points;
         points.assign(point_set.begin(), point_set.end());
 
@@ -131,19 +131,21 @@ void test_correctness(double (*function)(vector<pair<double, double>>), int n, i
         double x = dis(generator);
         double y = dis(generator);
 
-        while (point_set.size() < n) {
+        while (point_set.size() < n)
+        {
 
-            if (dis(generator) >= (max + min) / 2) {
+            if (dis(generator) >= (max + min) / 2)
+            {
                 point_set.emplace(dis(generator), y);
-            } else {
+            }
+            else
+            {
                 point_set.emplace(x, dis(generator));
             }
         }
 
-
         vector<pair<double, double>> points;
         points.assign(point_set.begin(), point_set.end());
-
 
         test_cases.push_back(points);
     }
@@ -177,7 +179,7 @@ en un set de puntos.
 - step: Salto de un test a otro
 - iterations: Cantidad de iteraciones por cada cantidad de puntos.
 */
-void test_complexity(double (*function)(vector<pair<double, double>>), string filename, string testname, int min, int max, int step, int iterations)
+void test_time(double (*function)(vector<pair<double, double>>), string filename, string testname, int min, int max, int step, int iterations)
 {
     string filepath = "tests/" + filename;
 

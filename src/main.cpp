@@ -3,23 +3,42 @@
 #include "testing_functions.h"
 #include <iostream>
 
-const std::vector<int> two_powers = {8,16,32,64,128,256,512};
+const std::vector<int> two_powers = {8, 16, 32, 64, 128, 256, 512};
 
 int main()
 {
-    std::cout << "Inicio el test" << std::endl;
+    std::cout << "Inició el test" << std::endl;
 
-    // test_correctness(20, -20, 20);
-    test_complexity(bruteforceMinDist, "test.csv", "brute_force", 8, 512, 1, 20);
-    test_complexity(divideconquerMinDist, "test.csv", "divide_and_conquer", 8, 512, 1, 20);
-    
+    /*
+    // Todos contra todos
+    test_time(bruteforceMinDist, "all.csv", "Fuerza bruta", 8, 512, 1, 20);
+    test_time(bruteforceMinDist_upgraded, "all.csv", "Fuerza bruta con mejora trivial", 8, 512, 1, 20);
+    test_time(divideconquerMinDist, "all.csv", "Dividir y conquistar", 8, 512, 1, 20);
+    */
+
+    // Brute force
+    test_time(bruteforceMinDist, "BFvsBFUP.csv", "Fuerza bruta", 8, 512, 1, 20);
+    test_time(bruteforceMinDist_upgraded, "BFvsBFUP.csv", "Fuerza bruta con mejora trivial", 8, 512, 1, 20);
+    test_time(bruteforceMinDist_upgraded2, "BFvsBFUP.csv", "Fuerza bruta con mejora", 8, 512, 1, 20);
+    /*
+    // Divide and conquer
+    test_time(divideconquerMinDist, "DaCvsDaCUP.csv", "Dividir y conquistar", 8, 512, 1, 20);
+
     // Test con potencias de 2
-    for (size_t i=0; i < two_powers.size(); ++i) {
-        test_complexity(bruteforceMinDist, "test.csv", "brute_force_2pow", two_powers[i], two_powers[i], 1, 20);
-        test_complexity(divideconquerMinDist, "test.csv", "divide_and_conquer_2pow", two_powers[i], two_powers[i], 1, 20);
+    for (size_t i = 0; i < two_powers.size(); ++i)
+    {
+        test_time(bruteforceMinDist, "test2power.csv", "Fuerza bruta (potencias de 2)", two_powers[i], two_powers[i], 1, 20);
+        test_time(divideconquerMinDist, "test2power.csv", "Dividir y conquistar (potencias de 2)", two_powers[i], two_powers[i], 1, 20);
     }
+    */
 
-    std::cout << "Finalizo el test" << std::endl;
+    // EJECUTAR DESPUES PERO CON DC_CASE_BASE = 4
+    /*
+    test_time(divideconquerMinDist, "all.csv", "Dividir y conquistar con mejora trivial", 8, 512, 1, 20);
+    test_time(divideconquerMinDist, "DaCvsDaCUP.csv", "Dividir y conquistar con mejora trivial", 8, 512, 1, 20);
+    */
+
+    std::cout << "Finalizó el test" << std::endl;
 
     return 0;
 }

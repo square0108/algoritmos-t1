@@ -40,7 +40,7 @@ try:
     sns.set_theme(style="whitegrid")
     plt.figure(figsize=(12, 6))
 
-    sns.lineplot(data=grouped, x="n", y="time_ns", hue="test_name", marker='o')
+    sns.lineplot(data=grouped, x="n", y="time_ns", hue="test_name", marker='')
 
     plt.title("Tiempo promedio por tamaño de entrada (n)")
     plt.xlabel("Tamaño de entrada (n)")

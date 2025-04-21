@@ -29,7 +29,7 @@ double bruteforceMinDist(vector<pair<double, double>> S)
 }
 
 // Iterar sobre conjunto y calcular N-1, N-2, N-3, ..., 1 distancias, levemente mejor que la anterior
-double bruteforceMinDist_oldest(vector<pair<double, double>> S)
+double bruteforceMinDist_upgraded(vector<pair<double, double>> S)
 {
     double min_dist = numeric_limits<double>::infinity();
     for (auto p1 = S.begin(); p1 != S.end(); p1++)
@@ -47,7 +47,10 @@ double bruteforceMinDist_oldest(vector<pair<double, double>> S)
     return min_dist;
 }
 
-double bruteforceMinDistBetter(vector<pair<double, double>> S)
+// Ordenar con con respecto al eje x de  forma creciente
+// Iterar sobre conjunto y calcular N-1, N-2, N-3, ..., 1 distancias
+// Parar si x_{i+1} - x_{i} > distacia mínima
+double bruteforceMinDist_upgraded2(vector<pair<double, double>> S)
 {
     double min_dist = numeric_limits<double>::infinity();
 

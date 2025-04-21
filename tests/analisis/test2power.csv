@@ -1,0 +1,281 @@
+test_name,n,time_ns
+Fuerza bruta (potencias de 2),8,1814
+Fuerza bruta (potencias de 2),8,1660
+Fuerza bruta (potencias de 2),8,1465
+Fuerza bruta (potencias de 2),8,1403
+Fuerza bruta (potencias de 2),8,1374
+Fuerza bruta (potencias de 2),8,1380
+Fuerza bruta (potencias de 2),8,1512
+Fuerza bruta (potencias de 2),8,1410
+Fuerza bruta (potencias de 2),8,1483
+Fuerza bruta (potencias de 2),8,1407
+Fuerza bruta (potencias de 2),8,1395
+Fuerza bruta (potencias de 2),8,1458
+Fuerza bruta (potencias de 2),8,1392
+Fuerza bruta (potencias de 2),8,1391
+Fuerza bruta (potencias de 2),8,1479
+Fuerza bruta (potencias de 2),8,1465
+Fuerza bruta (potencias de 2),8,1472
+Fuerza bruta (potencias de 2),8,2618
+Fuerza bruta (potencias de 2),8,2293
+Fuerza bruta (potencias de 2),8,2186
+Dividir y conquistar (potencias de 2),8,12885
+Dividir y conquistar (potencias de 2),8,11281
+Dividir y conquistar (potencias de 2),8,14185
+Dividir y conquistar (potencias de 2),8,13186
+Dividir y conquistar (potencias de 2),8,8754
+Dividir y conquistar (potencias de 2),8,8698
+Dividir y conquistar (potencias de 2),8,8634
+Dividir y conquistar (potencias de 2),8,9626
+Dividir y conquistar (potencias de 2),8,7715
+Dividir y conquistar (potencias de 2),8,7826
+Dividir y conquistar (potencias de 2),8,7778
+Dividir y conquistar (potencias de 2),8,7671
+Dividir y conquistar (potencias de 2),8,7663
+Dividir y conquistar (potencias de 2),8,7750
+Dividir y conquistar (potencias de 2),8,7655
+Dividir y conquistar (potencias de 2),8,7675
+Dividir y conquistar (potencias de 2),8,7731
+Dividir y conquistar (potencias de 2),8,7898
+Dividir y conquistar (potencias de 2),8,7713
+Dividir y conquistar (potencias de 2),8,7812
+Fuerza bruta (potencias de 2),16,6030
+Fuerza bruta (potencias de 2),16,5275
+Fuerza bruta (potencias de 2),16,5268
+Fuerza bruta (potencias de 2),16,5655
+Fuerza bruta (potencias de 2),16,5613
+Fuerza bruta (potencias de 2),16,5601
+Fuerza bruta (potencias de 2),16,5625
+Fuerza bruta (potencias de 2),16,8983
+Fuerza bruta (potencias de 2),16,6057
+Fuerza bruta (potencias de 2),16,6059
+Fuerza bruta (potencias de 2),16,6839
+Fuerza bruta (potencias de 2),16,5408
+Fuerza bruta (potencias de 2),16,5604
+Fuerza bruta (potencias de 2),16,5614
+Fuerza bruta (potencias de 2),16,5416
+Fuerza bruta (potencias de 2),16,5735
+Fuerza bruta (potencias de 2),16,5640
+Fuerza bruta (potencias de 2),16,5354
+Fuerza bruta (potencias de 2),16,5556
+Fuerza bruta (potencias de 2),16,5611
+Dividir y conquistar (potencias de 2),16,24161
+Dividir y conquistar (potencias de 2),16,23123
+Dividir y conquistar (potencias de 2),16,20625
+Dividir y conquistar (potencias de 2),16,21695
+Dividir y conquistar (potencias de 2),16,20389
+Dividir y conquistar (potencias de 2),16,19723
+Dividir y conquistar (potencias de 2),16,19726
+Dividir y conquistar (potencias de 2),16,19782
+Dividir y conquistar (potencias de 2),16,20281
+Dividir y conquistar (potencias de 2),16,20026
+Dividir y conquistar (potencias de 2),16,20313
+Dividir y conquistar (potencias de 2),16,20057
+Dividir y conquistar (potencias de 2),16,19955
+Dividir y conquistar (potencias de 2),16,20171
+Dividir y conquistar (potencias de 2),16,20367
+Dividir y conquistar (potencias de 2),16,19977
+Dividir y conquistar (potencias de 2),16,19655
+Dividir y conquistar (potencias de 2),16,19861
+Dividir y conquistar (potencias de 2),16,20046
+Dividir y conquistar (potencias de 2),16,19638
+Fuerza bruta (potencias de 2),32,20080
+Fuerza bruta (potencias de 2),32,19895
+Fuerza bruta (potencias de 2),32,19669
+Fuerza bruta (potencias de 2),32,19689
+Fuerza bruta (potencias de 2),32,31987
+Fuerza bruta (potencias de 2),32,21062
+Fuerza bruta (potencias de 2),32,21064
+Fuerza bruta (potencias de 2),32,21131
+Fuerza bruta (potencias de 2),32,135935
+Fuerza bruta (potencias de 2),32,19025
+Fuerza bruta (potencias de 2),32,18998
+Fuerza bruta (potencias de 2),32,18970
+Fuerza bruta (potencias de 2),32,19078
+Fuerza bruta (potencias de 2),32,18987
+Fuerza bruta (potencias de 2),32,18958
+Fuerza bruta (potencias de 2),32,19103
+Fuerza bruta (potencias de 2),32,19020
+Fuerza bruta (potencias de 2),32,19034
+Fuerza bruta (potencias de 2),32,19016
+Fuerza bruta (potencias de 2),32,19056
+Dividir y conquistar (potencias de 2),32,75473
+Dividir y conquistar (potencias de 2),32,53771
+Dividir y conquistar (potencias de 2),32,53392
+Dividir y conquistar (potencias de 2),32,46100
+Dividir y conquistar (potencias de 2),32,46682
+Dividir y conquistar (potencias de 2),32,45874
+Dividir y conquistar (potencias de 2),32,45845
+Dividir y conquistar (potencias de 2),32,45442
+Dividir y conquistar (potencias de 2),32,46057
+Dividir y conquistar (potencias de 2),32,45865
+Dividir y conquistar (potencias de 2),32,46060
+Dividir y conquistar (potencias de 2),32,46024
+Dividir y conquistar (potencias de 2),32,44658
+Dividir y conquistar (potencias de 2),32,44427
+Dividir y conquistar (potencias de 2),32,44401
+Dividir y conquistar (potencias de 2),32,44523
+Dividir y conquistar (potencias de 2),32,44751
+Dividir y conquistar (potencias de 2),32,44866
+Dividir y conquistar (potencias de 2),32,45922
+Dividir y conquistar (potencias de 2),32,45644
+Fuerza bruta (potencias de 2),64,93875
+Fuerza bruta (potencias de 2),64,90109
+Fuerza bruta (potencias de 2),64,72707
+Fuerza bruta (potencias de 2),64,73022
+Fuerza bruta (potencias de 2),64,72804
+Fuerza bruta (potencias de 2),64,73053
+Fuerza bruta (potencias de 2),64,72910
+Fuerza bruta (potencias de 2),64,72947
+Fuerza bruta (potencias de 2),64,73001
+Fuerza bruta (potencias de 2),64,73040
+Fuerza bruta (potencias de 2),64,72841
+Fuerza bruta (potencias de 2),64,73251
+Fuerza bruta (potencias de 2),64,72707
+Fuerza bruta (potencias de 2),64,72595
+Fuerza bruta (potencias de 2),64,72909
+Fuerza bruta (potencias de 2),64,72941
+Fuerza bruta (potencias de 2),64,76282
+Fuerza bruta (potencias de 2),64,77024
+Fuerza bruta (potencias de 2),64,77885
+Fuerza bruta (potencias de 2),64,73414
+Dividir y conquistar (potencias de 2),64,128072
+Dividir y conquistar (potencias de 2),64,106100
+Dividir y conquistar (potencias de 2),64,104152
+Dividir y conquistar (potencias de 2),64,103652
+Dividir y conquistar (potencias de 2),64,103582
+Dividir y conquistar (potencias de 2),64,102864
+Dividir y conquistar (potencias de 2),64,102712
+Dividir y conquistar (potencias de 2),64,102789
+Dividir y conquistar (potencias de 2),64,102715
+Dividir y conquistar (potencias de 2),64,103002
+Dividir y conquistar (potencias de 2),64,102317
+Dividir y conquistar (potencias de 2),64,104374
+Dividir y conquistar (potencias de 2),64,104675
+Dividir y conquistar (potencias de 2),64,105210
+Dividir y conquistar (potencias de 2),64,102042
+Dividir y conquistar (potencias de 2),64,102780
+Dividir y conquistar (potencias de 2),64,102711
+Dividir y conquistar (potencias de 2),64,102562
+Dividir y conquistar (potencias de 2),64,102687
+Dividir y conquistar (potencias de 2),64,101118
+Fuerza bruta (potencias de 2),128,365348
+Fuerza bruta (potencias de 2),128,286842
+Fuerza bruta (potencias de 2),128,286395
+Fuerza bruta (potencias de 2),128,286775
+Fuerza bruta (potencias de 2),128,287632
+Fuerza bruta (potencias de 2),128,286404
+Fuerza bruta (potencias de 2),128,287750
+Fuerza bruta (potencias de 2),128,286826
+Fuerza bruta (potencias de 2),128,286701
+Fuerza bruta (potencias de 2),128,286736
+Fuerza bruta (potencias de 2),128,290911
+Fuerza bruta (potencias de 2),128,294477
+Fuerza bruta (potencias de 2),128,285704
+Fuerza bruta (potencias de 2),128,285816
+Fuerza bruta (potencias de 2),128,285035
+Fuerza bruta (potencias de 2),128,285522
+Fuerza bruta (potencias de 2),128,286439
+Fuerza bruta (potencias de 2),128,287286
+Fuerza bruta (potencias de 2),128,286658
+Fuerza bruta (potencias de 2),128,286792
+Dividir y conquistar (potencias de 2),128,256035
+Dividir y conquistar (potencias de 2),128,251186
+Dividir y conquistar (potencias de 2),128,223102
+Dividir y conquistar (potencias de 2),128,221746
+Dividir y conquistar (potencias de 2),128,224604
+Dividir y conquistar (potencias de 2),128,226246
+Dividir y conquistar (potencias de 2),128,226650
+Dividir y conquistar (potencias de 2),128,222047
+Dividir y conquistar (potencias de 2),128,212416
+Dividir y conquistar (potencias de 2),128,213124
+Dividir y conquistar (potencias de 2),128,213967
+Dividir y conquistar (potencias de 2),128,215072
+Dividir y conquistar (potencias de 2),128,255352
+Dividir y conquistar (potencias de 2),128,215573
+Dividir y conquistar (potencias de 2),128,215725
+Dividir y conquistar (potencias de 2),128,216583
+Dividir y conquistar (potencias de 2),128,215965
+Dividir y conquistar (potencias de 2),128,218370
+Dividir y conquistar (potencias de 2),128,217020
+Dividir y conquistar (potencias de 2),128,251638
+Fuerza bruta (potencias de 2),256,1119146
+Fuerza bruta (potencias de 2),256,1111440
+Fuerza bruta (potencias de 2),256,1141933
+Fuerza bruta (potencias de 2),256,1114939
+Fuerza bruta (potencias de 2),256,1117697
+Fuerza bruta (potencias de 2),256,1131702
+Fuerza bruta (potencias de 2),256,1141121
+Fuerza bruta (potencias de 2),256,1146535
+Fuerza bruta (potencias de 2),256,1954602
+Fuerza bruta (potencias de 2),256,1149204
+Fuerza bruta (potencias de 2),256,1396595
+Fuerza bruta (potencias de 2),256,2112184
+Fuerza bruta (potencias de 2),256,1412007
+Fuerza bruta (potencias de 2),256,1766942
+Fuerza bruta (potencias de 2),256,1148239
+Fuerza bruta (potencias de 2),256,1126885
+Fuerza bruta (potencias de 2),256,1122761
+Fuerza bruta (potencias de 2),256,1197632
+Fuerza bruta (potencias de 2),256,1196654
+Fuerza bruta (potencias de 2),256,1203024
+Dividir y conquistar (potencias de 2),256,545056
+Dividir y conquistar (potencias de 2),256,521370
+Dividir y conquistar (potencias de 2),256,522977
+Dividir y conquistar (potencias de 2),256,612104
+Dividir y conquistar (potencias de 2),256,691622
+Dividir y conquistar (potencias de 2),256,495402
+Dividir y conquistar (potencias de 2),256,544298
+Dividir y conquistar (potencias de 2),256,540203
+Dividir y conquistar (potencias de 2),256,486251
+Dividir y conquistar (potencias de 2),256,772460
+Dividir y conquistar (potencias de 2),256,857014
+Dividir y conquistar (potencias de 2),256,1176123
+Dividir y conquistar (potencias de 2),256,618501
+Dividir y conquistar (potencias de 2),256,654771
+Dividir y conquistar (potencias de 2),256,659256
+Dividir y conquistar (potencias de 2),256,727522
+Dividir y conquistar (potencias de 2),256,846142
+Dividir y conquistar (potencias de 2),256,898456
+Dividir y conquistar (potencias de 2),256,920369
+Dividir y conquistar (potencias de 2),256,842692
+Fuerza bruta (potencias de 2),512,5265640
+Fuerza bruta (potencias de 2),512,6093039
+Fuerza bruta (potencias de 2),512,5935811
+Fuerza bruta (potencias de 2),512,4374101
+Fuerza bruta (potencias de 2),512,5696513
+Fuerza bruta (potencias de 2),512,4364722
+Fuerza bruta (potencias de 2),512,4375759
+Fuerza bruta (potencias de 2),512,4346980
+Fuerza bruta (potencias de 2),512,4350021
+Fuerza bruta (potencias de 2),512,4536932
+Fuerza bruta (potencias de 2),512,4714716
+Fuerza bruta (potencias de 2),512,4541323
+Fuerza bruta (potencias de 2),512,4342279
+Fuerza bruta (potencias de 2),512,4350594
+Fuerza bruta (potencias de 2),512,4427800
+Fuerza bruta (potencias de 2),512,4641847
+Fuerza bruta (potencias de 2),512,4727609
+Fuerza bruta (potencias de 2),512,4427101
+Fuerza bruta (potencias de 2),512,4532877
+Fuerza bruta (potencias de 2),512,4681875
+Dividir y conquistar (potencias de 2),512,1112240
+Dividir y conquistar (potencias de 2),512,1139712
+Dividir y conquistar (potencias de 2),512,1076231
+Dividir y conquistar (potencias de 2),512,1063100
+Dividir y conquistar (potencias de 2),512,1065079
+Dividir y conquistar (potencias de 2),512,1126824
+Dividir y conquistar (potencias de 2),512,1102045
+Dividir y conquistar (potencias de 2),512,1190081
+Dividir y conquistar (potencias de 2),512,1122117
+Dividir y conquistar (potencias de 2),512,1169889
+Dividir y conquistar (potencias de 2),512,2005149
+Dividir y conquistar (potencias de 2),512,1523069
+Dividir y conquistar (potencias de 2),512,1031200
+Dividir y conquistar (potencias de 2),512,1024143
+Dividir y conquistar (potencias de 2),512,1025462
+Dividir y conquistar (potencias de 2),512,1021038
+Dividir y conquistar (potencias de 2),512,1100018
+Dividir y conquistar (potencias de 2),512,2214681
+Dividir y conquistar (potencias de 2),512,1037443
+Dividir y conquistar (potencias de 2),512,1024955

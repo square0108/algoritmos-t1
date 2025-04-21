@@ -16,28 +16,9 @@ bool compare_y(std::pair<double, double> p1, std::pair<double, double> p2);
 double _mindist(std::vector<std::pair<double, double>> P, std::vector<std::pair<double, double>> X, std::vector<std::pair<double, double>> Y);
 void debug_print_points(std::vector<std::pair<double, double>> P);
 
-// random number generator, probar modificando distribuciones
-std::random_device rd;
-std::mt19937 gen(rd());
-std::geometric_distribution<> distr(0.013331);
 const int N_POINTS = 11;
 const bool DEBUG = 0;
-const int dc_base_case = 4;
-
-/*
-int main()
-{
-	std::vector<std::pair<double,double>> blangonga;
-	// set de puntos bonitos :)
-	// {make_pair(0,1),make_pair(1,0),make_pair(2,0.5),make_pair(2.2,1),make_pair(4.2,2),make_pair(4.2,1)};
-	for (int i = 0; i < N_POINTS; ++i) {
-		blangonga.push_back(std::make_pair<double,double>((double) distr(gen), (double) distr(gen)));
-	}
-	std::cout << "mindist DIVIDE AND CONQUER:\n " << divideconquerMinDist(blangonga) << std::endl;
-	std::cout << "mindist BRUTEFORCE: " << bruteforceMinDist(blangonga) << std::endl;
-	return 0;
-
-*/
+const int dc_base_case = 3;
 
 /* Esta NO ES la función que recursa (la indicada es _mindist), sólo hace el pre-sort. */
 double divideconquerMinDist(std::vector<std::pair<double, double>> points)
@@ -80,28 +61,32 @@ double _mindist(std::vector<std::pair<double, double>> P, std::vector<std::pair<
 		X_R.push_back(X[i]);
 	}
 
-    auto mediana = X_R[0];
+	auto mediana = X_R[0];
 
-
-    /* 
-     * Primero ingresamos a X_R los elementos que se encuentran a la derecha de la mediana, y a 
-     * X_L los que se encuentran a la izquierda.
-     */
-	for (auto pair : Y) {
-        if (pair.first > mediana.first) {
-            Y_R.push_back(pair);
-        } else if (pair.first == mediana.first && pair.second >= mediana.second) {
-            Y_R.push_back(pair);
-        } else {
-            Y_L.push_back(pair);
-        }
+	/*
+	 * Primero ingresamos a X_R los elementos que se encuentran a la derecha de la mediana, y a
+	 * X_L los que se encuentran a la izquierda.
+	 */
+	for (auto pair : Y)
+	{
+		if (pair.first > mediana.first)
+		{
+			Y_R.push_back(pair);
+		}
+		else if (pair.first == mediana.first && pair.second >= mediana.second)
+		{
+			Y_R.push_back(pair);
+		}
+		else
+		{
+			Y_L.push_back(pair);
+		}
 	}
 
-
-    
-	// debug debug
-	if (DEBUG) {
-        std::cout << "jeje" << std::endl;
+	// Se imprime si el modo debug está habilitado, es para verificar que los conjuntos se
+	// Están formando correctamente.
+	if (DEBUG)
+	{
 		std::cout << "X: ";
 		debug_print_points(X);
 		std::cout << "Y: ";
@@ -127,15 +112,17 @@ double _mindist(std::vector<std::pair<double, double>> P, std::vector<std::pair<
 
 	// filtrar sólo los puntos de P_L y P_R  con ``dist`` distancia respecto a la recta
 
-	std::vector<std::pair<double,double>> strip;
-	for (auto p : Y) {
-        if (abs(mediana.first - p.first) < dist) strip.push_back(p);
-		//if (abs(bisection_X - p.first) < dist)
-	    //	strip.push_back(p);
+	std::vector<std::pair<double, double>> strip;
+	for (auto p : Y)
+	{
+		if (abs(mediana.first - p.first) < dist)
+			strip.push_back(p);
+		// if (abs(bisection_X - p.first) < dist)
+		//	strip.push_back(p);
 	}
 
 	// de de debug print
-	//if (DEBUG)
+	// if (DEBUG)
 	//{
 	//	std::cout << "strip: ";
 	//	debug_print_points(strip);
@@ -157,27 +144,38 @@ double _mindist(std::vector<std::pair<double, double>> P, std::vector<std::pair<
 /* Retorna True si p1 < p2 orden lexicografico x-y*/
 bool compare_x(std::pair<double, double> p1, std::pair<double, double> p2)
 {
-    if (p1.first < p2.first) {
-        return true;
-    } else if (p1.first == p2.first) {
-        return p1.second < p2.second;
-    } else {
-        return false;
-    }
+	if (p1.first < p2.first)
+	{
+		return true;
+	}
+	else if (p1.first == p2.first)
+	{
+		return p1.second < p2.second;
+	}
+	else
+	{
+		return false;
+	}
 }
 
 /* Retorna True si p1 < p2 orden lexicografico y-x*/
 bool compare_y(std::pair<double, double> p1, std::pair<double, double> p2)
 {
-    if (p1.second < p2.second) {
-        return true;
-    } else if (p1.second == p2.second) {
-        return p1.first < p2.first;
-    } else {
-        return false;
-    }
+	if (p1.second < p2.second)
+	{
+		return true;
+	}
+	else if (p1.second == p2.second)
+	{
+		return p1.first < p2.first;
+	}
+	else
+	{
+		return false;
+	}
 }
 
+/*Función para imprimir puntos de un conjunto*/
 void debug_print_points(std::vector<std::pair<double, double>> P)
 {
 	std::cout << "Points set: ";
