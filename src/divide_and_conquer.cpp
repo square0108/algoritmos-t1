@@ -18,7 +18,7 @@ void debug_print_points(std::vector<std::pair<double, double>> P);
 
 const int N_POINTS = 11;
 const bool DEBUG = 0;
-const int dc_base_case = 3;
+const int dc_base_case = 4;
 
 /* Esta NO ES la función que recursa (la indicada es _mindist), sólo hace el pre-sort. */
 double divideconquerMinDist(std::vector<std::pair<double, double>> points)

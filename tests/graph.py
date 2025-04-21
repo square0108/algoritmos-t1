@@ -47,7 +47,7 @@ try:
     plt.ylabel("Tiempo promedio (ns)")
     plt.legend(title="Método")
     plt.tight_layout()
-    plt.show()
+    plt.savefig(str(args.csv_path).replace("csv", "") + "pdf", bbox_inches="tight")
 except Exception as e:
     print(f"Error al generar el gráfico: {e}")
     sys.exit(1)

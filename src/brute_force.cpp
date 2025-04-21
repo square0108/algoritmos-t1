@@ -80,3 +80,15 @@ double bruteforceMinDist_upgraded2(vector<pair<double, double>> S)
     }
     return min_dist;
 }
+
+
+double linear(vector<pair<double, double>> S) {
+    double min_dist = numeric_limits<double>::infinity();
+    for (auto p1 = S.begin(); p1 != S.end(); p1++)
+    {
+        double dist = calculateDistance(*p1, make_pair(0, 0));
+        min_dist = (dist < min_dist) ? dist : min_dist;
+    }
+    return min_dist;
+
+}
