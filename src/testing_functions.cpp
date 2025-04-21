@@ -52,9 +52,8 @@ vector<pair<double, double>> generatePoints(int n, int min, int max)
  * Función para revisar la correctitud del algoritmo d&c con algunos casos patológicos.
  - n: cantidad de elementos en los vectores
  */
-void test_correctness(int n, int min, int max)
+void test_correctness(double (*function)(vector<pair<double, double>>), int n, int min, int max)
 {
-
     vector<vector<pair<double, double>>> test_cases;
 
     vector<pair<double, double>> puntos_lindos = {make_pair(1, 4), make_pair(-1, 0), make_pair(3, 4), make_pair(7, 8), make_pair(6, -2), make_pair(3, 2), make_pair(-2, 0), make_pair(3, 7)};
@@ -166,12 +165,13 @@ void test_correctness(int n, int min, int max)
     for (auto points : test_cases)
     {
 
-        std::cout << "Puntos: ";
-        debug_print_points(points);
+        // std::cout << "Puntos: ";
+        // debug_print_points(points);
         int bf_min = bruteforceMinDist(points);
-        int dc_min = divideconquerMinDist(points);
+        // Función que vamos a evaluar
+        int dc_min = function(points);
 
-        std::cout << "bf_min=" << bf_min << ", dc_min=" << dc_min << std::endl;
+        std::cout << "bf_min=" << bf_min << ", testing_func_min=" << dc_min << std::endl;
         if (dc_min != bf_min)
         {
             std::cout << "Failed" << std::endl;

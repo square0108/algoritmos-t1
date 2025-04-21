@@ -6,7 +6,6 @@
 
 void test_complexity(double (*function)(std::vector<std::pair<double, double>>), std::string filename, std::string testname, int min, int max, int step, int iterations);
 
-
-void test_correctness(int, int, int);
+void test_correctness(double (*function)(std::vector<std::pair<double, double>>), int, int, int);
 
 #endif
