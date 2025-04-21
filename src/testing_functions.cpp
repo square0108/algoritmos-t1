@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <vector>
+#include <set>
 #include <chrono>
 #include <random>
 #include <fstream>
@@ -35,15 +36,19 @@ vector<pair<double, double>> generatePoints(int n, int min, int max)
 
     uniform_real_distribution<> dis(min, max); // Distribución uniforme en [min, max]
 
-    vector<pair<double, double>> points;
-    points.reserve(n);
+    set<pair<double, double>> point_set;
 
-    for (int i = 0; i < n; ++i)
-    {
+    while (point_set.size() < n) {
+        
         double x = dis(generator);
         double y = dis(generator);
-        points.emplace_back(x, y);
+        point_set.emplace(x, y);
     }
+    
+
+    vector<pair<double, double>> points;
+    points.reserve(n);
+    points.assign(point_set.begin(), point_set.end());
 
     return points;
 }
@@ -66,24 +71,17 @@ void test_correctness(double (*function)(vector<pair<double, double>>), int n, i
     test_cases.push_back(singleton);
     test_cases.push_back(par);
 
-    std::default_random_engine generator;
-    uniform_int_distribution<> dis(min, max);
 
     /* Puntos aleatorios */
     for (int i = 0; i < 20; ++i)
     {
-        vector<pair<double, double>> points;
-        points.reserve(n);
-
-        for (int i = 0; i < n; ++i)
-        {
-            double x = dis(generator);
-            double y = dis(generator);
-            points.emplace_back(x, y);
-        }
+        vector<pair<double, double>> points = generatePoints(n, min, max);
 
         test_cases.push_back(points);
     }
+
+    std::default_random_engine generator;
+    uniform_real_distribution<> dis(min, max);
 
     /* Puntos con misma coordenada x */
     for (int i = 0; i < 20; ++i)
@@ -91,16 +89,18 @@ void test_correctness(double (*function)(vector<pair<double, double>>), int n, i
         // Fijamos un x
         double fixed_x = dis(generator);
 
-        vector<pair<double, double>> points;
-        points.reserve(n);
+        set<pair<double, double>> point_set;
 
-        for (int i = 0; i < n; ++i)
-        {
+        while (point_set.size() < n) {
             double y = dis(generator);
-            points.emplace_back(fixed_x, y);
+            point_set.emplace(fixed_x, y);
         }
+        
+        vector<pair<double, double>> points;
+        points.assign(point_set.begin(), point_set.end());
 
         test_cases.push_back(points);
+
     }
 
     /* Puntos con misma coordenada y */
@@ -109,31 +109,15 @@ void test_correctness(double (*function)(vector<pair<double, double>>), int n, i
         // Fijamos un x
         double fixed_y = dis(generator);
 
-        vector<pair<double, double>> points;
-        points.reserve(n);
+        set<pair<double, double>> point_set;
 
-        for (int i = 0; i < n; ++i)
-        {
+        while (point_set.size() < n) {
             double x = dis(generator);
-            points.emplace_back(x, fixed_y);
+            point_set.emplace(x, fixed_y);
         }
-
-        test_cases.push_back(points);
-    }
-
-    /* El mismo punto repetido muchas veces */
-    for (int i = 0; i < 20; ++i)
-    {
-
+        
         vector<pair<double, double>> points;
-        points.reserve(n);
-        double x = dis(generator);
-        double y = dis(generator);
-
-        for (int i = 0; i < n; ++i)
-        {
-            points.emplace_back(x, y);
-        }
+        points.assign(point_set.begin(), point_set.end());
 
         test_cases.push_back(points);
     }
@@ -142,22 +126,24 @@ void test_correctness(double (*function)(vector<pair<double, double>>), int n, i
     for (int i = 0; i < 20; ++i)
     {
 
-        vector<pair<double, double>> points;
-        points.reserve(n);
+        set<pair<double, double>> point_set;
+
         double x = dis(generator);
         double y = dis(generator);
 
-        for (int i = 0; i < n; ++i)
-        {
-            if (dis(generator) >= (max + min) / 2)
-            {
-                points.emplace_back(dis(generator), y);
-            }
-            else
-            {
-                points.emplace_back(x, dis(generator));
+        while (point_set.size() < n) {
+
+            if (dis(generator) >= (max + min) / 2) {
+                point_set.emplace(dis(generator), y);
+            } else {
+                point_set.emplace(x, dis(generator));
             }
         }
+
+
+        vector<pair<double, double>> points;
+        points.assign(point_set.begin(), point_set.end());
+
 
         test_cases.push_back(points);
     }
@@ -167,9 +153,9 @@ void test_correctness(double (*function)(vector<pair<double, double>>), int n, i
 
         // std::cout << "Puntos: ";
         // debug_print_points(points);
-        int bf_min = bruteforceMinDist(points);
+        double bf_min = bruteforceMinDist(points);
         // Función que vamos a evaluar
-        int dc_min = function(points);
+        double dc_min = function(points);
 
         std::cout << "bf_min=" << bf_min << ", testing_func_min=" << dc_min << std::endl;
         if (dc_min != bf_min)
