@@ -22,6 +22,8 @@ std::mt19937 gen(rd());
 std::geometric_distribution<> distr(0.013331);
 const int N_POINTS = 11;
 const bool DEBUG = 0;
+const int dc_base_case = 4;
+
 /*
 int main()
 {
@@ -57,7 +59,7 @@ double divideconquerMinDist(std::vector<std::pair<double, double>> points)
 double _mindist(std::vector<std::pair<double, double>> P, std::vector<std::pair<double, double>> X, std::vector<std::pair<double, double>> Y)
 {
 	// Caso base de la recursión
-	if (P.size() <= 3)
+	if (P.size() <= dc_base_case)
 		return bruteforceMinDist(P);
 
 	/*
