@@ -33,3 +33,6 @@
 
 #make output
 run
+
+# Python virtual environment
+venv/
