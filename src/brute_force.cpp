@@ -18,7 +18,7 @@ double bruteforceMinDist(vector<pair<double, double>> S)
     double min_dist = numeric_limits<double>::infinity();
     for (auto p1 = S.begin(); p1 != S.end(); p1++)
     {
-        for (auto p2 = S.begin(); p2 != S.end(); p2++)
+        for (auto p2 = S.begin(); p2 != S.end() && (*p1) != (*p2); p2++)
         {
             double dist = calculateDistance(*p1, *p2);
             if ((min_dist) > dist)
